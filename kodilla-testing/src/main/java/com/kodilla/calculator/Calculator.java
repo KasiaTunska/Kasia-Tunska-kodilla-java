@@ -1,4 +1,6 @@
- class Calculator {
+package com.kodilla.calculator;
+
+class Calculator {
 
 
 
@@ -17,7 +19,3 @@
 
     }
 }
-
-
-
-

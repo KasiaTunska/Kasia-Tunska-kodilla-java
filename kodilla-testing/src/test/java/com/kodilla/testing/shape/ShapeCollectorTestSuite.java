@@ -136,7 +136,7 @@ public class ShapeCollectorTestSuite {
             assertEquals(triangle, result);
         }
 
-        @Test
+         @Test
         public void testShowFigures() {
             //Given
             ShapeCollector shapeCollector = new ShapeCollector();

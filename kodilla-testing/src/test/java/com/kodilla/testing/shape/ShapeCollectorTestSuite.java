@@ -1,5 +1,4 @@
 package com.kodilla.testing.shape;
-
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -10,7 +9,6 @@ public class ShapeCollectorTestSuite {
 
     @Nested
     @DisplayName("Tests for addFigure")
-
     class addFigure {
         ShapeCollector shapeCollector = new ShapeCollector();
 
@@ -47,14 +45,13 @@ public class ShapeCollectorTestSuite {
 
     @Nested
     @DisplayName("Tests for removeFigure")
-
     class removeFigure {
         ShapeCollector shapeCollector = new ShapeCollector();
 
         @Test
         void removeFromEmptyList() {
             //Given
-            Shape shape = new Circle(6.0);
+            Shape shape = new Circle(4.0);
             //When
             boolean check = shapeCollector.removeFigure(shape);
             //Then
@@ -97,7 +94,6 @@ public class ShapeCollectorTestSuite {
 
     @Nested
     @DisplayName("Tests for getFigure")
-
     class getFigure {
         ShapeCollector shapeCollector = new ShapeCollector();
         Shape circle = new Circle(4.0);
@@ -138,6 +134,19 @@ public class ShapeCollectorTestSuite {
             Shape result = shapeCollector.getFigure(2);
             //Then
             assertEquals(triangle, result);
+        }
+
+        @Test
+        public void testShowFigures() {
+            //Given
+            ShapeCollector shapeCollector = new ShapeCollector();
+            shapeCollector.addFigure(new Circle(4.0));
+            shapeCollector.addFigure(new Triangle(4.0,8.0));
+            shapeCollector.addFigure(new Square(4.0));
+            //When
+            String result = shapeCollector.showFigures();
+            //Then
+            Assertions.assertEquals(result,"Circle Triangle Square");
         }
     }
 }

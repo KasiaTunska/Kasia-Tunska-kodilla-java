@@ -22,9 +22,15 @@ public class ShapeCollector {
     public Shape getFigure(int n) {
         return figureList.get(n);
     }
-
-    public List showFigures() {
-        return figureList;
+    public String showFigures() {
+        String shapeName ="";
+        for ( int i =0; i<figureList.size(); i++) {
+            shapeName = shapeName + figureList.get(i).getShapeName();
+            if((figureList.size()-1)!=i) {
+                shapeName = shapeName + " ";
+            }
+        }
+        return shapeName;
     }
 }
 

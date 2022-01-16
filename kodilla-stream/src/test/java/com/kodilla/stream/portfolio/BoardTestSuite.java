@@ -1,10 +1,14 @@
 package com.kodilla.stream.portfolio;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -125,28 +129,29 @@ public class BoardTestSuite {
 
 
     @Test
-    void testAddTaskListAverageWorkingOnTask() {
+    public void testAddTaskListAverageWorkingOnTask() {
         //Given
         Board project = prepareTestData();
 
         //When
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        long numberOfTasks = project.getTaskLists().stream()
+        List<Integer> taskTimeList = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getCreated)
-                .count();
+                .map(days -> Period.between(days.getCreated(), LocalDate.now()).getDays())
+                .collect(Collectors.toList());
 
-        int sumAllDays = project.getTaskLists().stream()
-                .filter(inProgressTasks::contains)
-                .flatMap(tl -> tl.getTasks().stream())
-                .map(Task::getCreated)
-                .map(tl -> tl.getDayOfMonth())
-                .map(tl -> LocalDate.now().getDayOfMonth() - tl)
-                .reduce(0, (sum, current) -> sum + current);
+        int[] taskTimeTable = new int[taskTimeList.size()];
+        for(int i = 0; i<taskTimeList.size(); i++) {
+            taskTimeTable[i] = taskTimeList.get(i);
+        }
+
+        double taskTimeAverage = IntStream.range(0, taskTimeTable.length)
+                .map(number -> taskTimeTable[number])
+                .average().getAsDouble();
 
         //Then
-        assertEquals(10, sumAllDays / numberOfTasks);
+        Assert.assertEquals(10, taskTimeAverage, 0);
     }
 }

@@ -1,11 +1,42 @@
 package com.kodilla.good.patterns;
 
-public class GlutenFreeShop implements Supplier {
-    private final String companyName = "GlutenFreeShop";
+import java.util.HashMap;
+import java.util.Map;
 
-    public void process(com.kodilla.good.patterns.Order order) {
-        System.out.println("Thanks for your order on behalf of \"" + companyName + "\"." +
-                " I hope you will be pleased with our products." + " Just to confirm your ordered: " +
-                order.getCount() + " of " + order.getProduct() + " . Your order is being processed.");
+public class GlutenFreeShop implements Supplier {
+
+    private static final String CORN_FLOUR = "Corn flour ";
+    private static final String BREAD = "Bread ";
+    private static final String COOKIES = "Cookies ";
+    private static final String COMPANY = "GlutenFreeShop ";
+    public Map<String, Integer> listOfProducts = new HashMap<>();
+    private int quantityOfCornFlour;
+    private int quantityOfBread;
+    private int quantityOfCookies;
+
+
+    public GlutenFreeShop(int quantityOfCornFlour, int quantityOfBread, int quantityOfCookies) {
+        this.quantityOfCornFlour = quantityOfCornFlour;
+        this.quantityOfBread = quantityOfBread;
+        this.quantityOfCookies = quantityOfCookies;
+    }
+
+    public int getQuantityOfCornFlour() {
+        return quantityOfCornFlour;
+    }
+
+    public int getQuantityOfBread() {
+        return quantityOfBread;
+    }
+
+    public int getQuantityOfCookies() {
+        return quantityOfCookies;
+    }
+
+    public Order process() {
+        listOfProducts.put(BREAD, getQuantityOfBread());
+        listOfProducts.put(COOKIES, getQuantityOfCookies());
+        listOfProducts.put(CORN_FLOUR, getQuantityOfCornFlour());
+        return new Order(listOfProducts, COMPANY);
     }
 }

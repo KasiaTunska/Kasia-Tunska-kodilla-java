@@ -1,10 +1,44 @@
 package com.kodilla.good.patterns;
 
-public class ExtraFoodShop implements Supplier {
-    private final String companyName = "ExtraFoodShop";
+import java.util.HashMap;
+import java.util.Map;
 
-    public void process(Order order) {
-        System.out.println("I`d like to thank you for your order of " + order.getProduct()
-                + " on behalf of \"" + companyName + "\"." + "Your order is being processed...");
+public class ExtraFoodShop implements Supplier {
+
+    private static final String CLAMS = "Clams ";
+    private static final String PRAWNS = "Prawns ";
+    private static final String OYSTERS = "Oysters ";
+    private static final String COMPANY = "ExtraFoodShop ";
+    public Map<String, Integer> listOfProducts = new HashMap<>();
+
+    private int quantityOfClams;
+    private int quantityOfPrawns;
+    private int quantityOfOysters;
+
+
+    public ExtraFoodShop(int quantityOfClams, int quantityOfPrawns, int quantityOfOysters) {
+        this.quantityOfClams = quantityOfClams;
+        this.quantityOfPrawns = quantityOfPrawns;
+        this.quantityOfOysters = quantityOfOysters;
+    }
+
+    public int getQuantityOfClams() {
+        return quantityOfClams;
+    }
+
+    public int getQuantityOfPrawns() {
+        return quantityOfPrawns;
+    }
+
+    public int getQuantityOfOysters() {
+        return quantityOfOysters;
+    }
+
+    public Order process() {
+        listOfProducts.put(CLAMS, getQuantityOfClams());
+        listOfProducts.put(OYSTERS, getQuantityOfOysters());
+        listOfProducts.put(PRAWNS, getQuantityOfPrawns());
+
+        return new Order(listOfProducts, COMPANY);
     }
 }

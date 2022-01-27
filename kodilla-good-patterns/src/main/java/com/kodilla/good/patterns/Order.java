@@ -1,20 +1,23 @@
 package com.kodilla.good.patterns;
 
 
+import java.util.Map;
+
 public class Order {
-    private String product;
-    private int count;
+    private Map<String, Integer> listOfProducts;
+    private String nameOfCompany;
 
-    public Order(String product, int count) {
-        this.product = product;
-        this.count = count;
+    public Order(Map<String, Integer> listOfProducts, String nameOfCompany) {
+        this.listOfProducts = listOfProducts;
+        this.nameOfCompany = nameOfCompany;
     }
 
-    public String getProduct() {
-        return product;
-    }
-
-    public int getCount() {
-        return count;
+    public void printOrder() {
+        System.out.println(nameOfCompany);
+        for (Map.Entry<String, Integer> entry : listOfProducts.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        System.out.println();
     }
 }
+

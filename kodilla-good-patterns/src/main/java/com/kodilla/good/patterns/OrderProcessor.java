@@ -1,33 +1,20 @@
 package com.kodilla.good.patterns;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 
 public class OrderProcessor {
-    private Supplier supplier;
-    private Order order;
 
-    public OrderProcessor(Supplier supplier, Order order) {
-        this.supplier = supplier;
-        this.order = order;
+    private List<Order> orderList = new ArrayList<>();
+
+    public void addToOrderList(Supplier supplier) {
+        orderList.add(supplier.process());
+
     }
 
-    public Supplier getSupplier() {
-        return supplier;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void makeOrder() {
-        supplier.process(order);
-    }
-
-    public void checkOrder() {
-        boolean isOrdered = true;
-        if (isOrdered) {
-            System.out.println("Your order has been successfully completed.");
-        } else {
-            System.out.println("Unfortunately your order has been rejected.");
-        }
+    public List<Order> getOrderList() {
+        return orderList;
     }
 }

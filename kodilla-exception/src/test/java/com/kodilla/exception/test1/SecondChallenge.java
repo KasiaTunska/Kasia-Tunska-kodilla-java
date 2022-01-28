@@ -1,4 +1,4 @@
-package com.kodilla.exception.test;
+package com.kodilla.exception.test1;
 
 public class SecondChallenge {
     public String probablyIWillThrowException(double x, double y) throws Exception {
@@ -8,3 +8,4 @@ public class SecondChallenge {
         return "Done!";
     }
 }
+

@@ -1,31 +1,37 @@
 package challenges2;
 
-public class FlightFinder {
+import java.util.HashMap;
+import java.util.Map;
 
-    public FlightFinder() {
+/*public class FlightFinder {
+    public void findFlight (Flight flight) throws RouteNotFoundException {
+        HashMap<String, Boolean> flightMap = new HashMap<String, Boolean>();
+        flightMap.put("Okęcie", true);
+        flightMap.put("Balice", true);
+        flightMap.put("Radom", false);
+        flightMap.put("Moskwa", false);
 
+        boolean result = false;
+
+        for(Map.Entry<String, Boolean> entry : flightMap.entrySet()) {
+            if(flight.getArrivalAirport() == entry.getKey() || flight.getDepartureAirport() == entry.getKey()) result = entry.getValue();
+        }
+
+        if(result) System.out.println("Choosen airport is on our flight map!!");
+        else throw new RouteNotFoundException();
     }
 
-    public void findFlightBasedOnDeparture(String chosenDepartureAirport) {
-        FlightDatabase flightDatabase = new FlightDatabase();
-        flightDatabase.getSet().stream()
-                .filter(flight -> flight.getDepartureAirport().matches(chosenDepartureAirport))
-                .forEach(System.out::println);
-    }
+    public static void main(String[] args) {
+        Flight flight = new Flight("Gdańsk", "Wrocław");
+        FlightFinder flightFinder = new FlightFinder();
 
-    public void findFlightBasedOnArrival(String chosenFlightBasedOnArrival) {
-        FlightDatabase flightDatabase = new FlightDatabase();
-        flightDatabase.getSet().stream()
-                .filter(flight -> flight.getArrivalAirport().matches(chosenFlightBasedOnArrival))
-                .forEach(System.out::println);
-    }
-
-    public void findFlightToThrough(String chosenChangeAirport, String chosenArrivalAirport) {
-        FlightDatabase flightDatabase = new FlightDatabase();
-        flightDatabase.getSet().stream()
-                .filter(flight -> flight.getArrivalAirport().matches(chosenArrivalAirport))
-                .filter(ft -> ft.getChangeAirport().matches(chosenChangeAirport))
-                .forEach(System.out::println);
-
+        try {
+            flightFinder.findFlight(flight);
+        } catch (RouteNotFoundException e) {
+            System.out.println("Sorry! Choosen airport is not on our flight map!!");
+        } finally {
+            System.out.println("End of using flightFinder");
+        }
     }
 }
+*/

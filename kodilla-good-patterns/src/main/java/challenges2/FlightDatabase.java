@@ -3,7 +3,7 @@ package challenges2;
 import java.util.HashSet;
 import java.util.Set;
 
-public class FlightDatabase {
+/*public class FlightDatabase {
 
     private Set<Flight> flightSet= new HashSet<>();
 
@@ -28,9 +28,10 @@ public class FlightDatabase {
                 "Milan", "no change"));
     }
 
-        public Set<Flight> getSet () {
-            return new HashSet<>(flightSet);
-
-        }
+    public Set<Flight> getSet () {
+        return new HashSet<>(flightSet);
 
     }
+
+}
+*/

@@ -1,5 +1,6 @@
 package com.kodilla.exception.test1;
 
+
 public class Flight {
     private String deptureAirport;
     private String arrivalAirport;

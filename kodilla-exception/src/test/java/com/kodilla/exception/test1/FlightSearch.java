@@ -3,6 +3,8 @@ package com.kodilla.exception.test1;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class FlightSearch {
     Map<String,Boolean> mapOfAirport = new HashMap<>();
 

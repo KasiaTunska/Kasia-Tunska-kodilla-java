@@ -2,6 +2,7 @@ package com.kodilla.exception.test1;
 
 
 
+
 public class Main {
     public static void main(String[] args){
         Flight flight = new Flight("Wroclaw", "Berlin");

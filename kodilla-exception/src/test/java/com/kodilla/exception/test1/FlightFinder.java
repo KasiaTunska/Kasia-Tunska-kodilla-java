@@ -3,6 +3,7 @@ package com.kodilla.exception.test1;
 import java.util.HashMap;
 import java.util.Map;
 
+
 class FlightFinder {
 
     private Map<String, Boolean> airports;

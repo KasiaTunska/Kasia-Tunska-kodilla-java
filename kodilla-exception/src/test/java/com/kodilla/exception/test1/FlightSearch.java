@@ -1,6 +1,5 @@
 package com.kodilla.exception.test1;
 
-
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,0 +1,69 @@
+create table ISSUESLISTS (
+                             ID serial primary key,
+                             NAME varchar(50) NOT NULL
+);
+
+create table ISSUES
+(
+    ID serial primary key,
+    ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+    SUMMARY VARCHAR(100) NOT NULL,
+    DESCRIPTION VARCHAR(300),
+    USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+    FOREIGN KEY(ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID),
+    FOREIGN KEY(USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+)
+
+INSERT INTO ISSUESLISTS(NAME)
+VALUES("TODO");
+INSERT INTO ISSUESLISTS(NAME)
+VALUES("INPROGRESS");
+INSERT INTO ISSUESLISTS(NAME)
+VALUES("DONE");
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(1, "Clean", "Clean the kitchen", 1);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(1, "Clean", "Clean the bathroom", 2);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(1, "Invite", "Invite the guests for dinner", 2);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(1, "Set up", "Set the table up", 3);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(1, "Call", "Call to mom", 4);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(2, "Mail", "Up to date", 1);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(2, "Yoga", "On schedule", 4);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(2, "Cake", "In progress", 1);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(2, "Laundry", "In progress", 3);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(2, "Work", "All done", 4);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(3, "Plant", "All plants have been watered", 4);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(3, "Dogs", "Dogs have been feeded", 3);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(3, "Living room", "Living room has been cleaned up", 2);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(3, "Wine", "Few bottles bought", 4);
+
+insert into ISSUES(ISSUESLIST_ID, SUMMARY, DESCRIPTION, USER_ID_ASSIGNEDTO)
+values(3, "Bills", "Bills paid", 3);
+
+commit;

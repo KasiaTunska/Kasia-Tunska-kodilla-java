@@ -2,11 +2,12 @@ package challenges2;
 
 
 
- class FlightFinder {
+public class FlightFinder {
     public static void main(String[] args) {
-        FlightChecker flightScanner = new FlightChecker();
-        flightScanner.lookForDepartureAirport("WMI");
-        flightScanner.lookForArrivalAirport("WRO");
-        flightScanner.lookForConnectingAirport("WAW", "WRO");
+        System.out.println(FlightChecker.searchByArrivalAirport("Monaco"));
+        System.out.println(FlightChecker.searchByDepartureAirport("Warsaw"));
+        System.out.println(FlightChecker.searchForConnectingFlights("Warsaw", "London",
+                "New York"));
+
     }
 }

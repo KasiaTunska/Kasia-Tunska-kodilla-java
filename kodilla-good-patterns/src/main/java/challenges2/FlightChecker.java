@@ -1,40 +1,37 @@
 package challenges2;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-
 public class FlightChecker {
-    private FlightDatabase flightChecker = new FlightDatabase();
-    private Set<Flight> flightSet = flightChecker.getFlightSet();
 
-    public void lookForArrivalAirport(String airport) {
-        flightSet.stream()
-                .filter(f -> f.getArrivalAirport().equals(airport))
-                .forEach(System.out::println);
+    public static List<Flight> searchByDepartureAirport(String departCity) {
+        return FlightDatabase.getTheFlightsList().stream()
+                .filter(f -> f.getDepartureCity().equals(departCity))
+                .collect(Collectors.toList());
+
     }
 
-    public void lookForDepartureAirport(String airport) {
-        flightSet.stream()
-                .filter(f -> f.getDepartureAirport().equals(airport))
-                .forEach(System.out::println);
+    public static List<Flight> searchByArrivalAirport(String arrivalCity) {
+        return FlightDatabase.getTheFlightsList().stream()
+                .filter(f -> f.getArrivalCity().equals(arrivalCity))
+                .collect(Collectors.toList());
+
     }
 
-    public void lookForConnectingAirport(String airport1, String airport2) {
-        Set<Flight> flightSet1 = flightSet.stream()
-                .filter(f -> f.getArrivalAirport().equals(airport1))
-                .collect(Collectors.toSet());
-        Set<Flight> flightSet2 = flightSet.stream()
-                .filter(f -> f.getArrivalAirport().equals(airport2))
-                .collect(Collectors.toSet());
-        for (Flight flight1 : flightSet1) {
-            for (Flight flight2 : flightSet2) {
-                if (flight1.getArrivalAirport().equals(flight2.getDepartureAirport())) {
-                    System.out.println(flight1);
-                    System.out.println(flight2);
-                }
-            }
-        }
+    public static List<Flight> searchForConnectingFlights(String departCity, String connectingCity, String arrivalCity) {
+        List<Flight> result = FlightDatabase.getTheFlightsList().stream()
+                .filter(f -> (f.getDepartureCity().equals(departCity)) && (f.getArrivalCity().equals(connectingCity)))
+                .collect(Collectors.toList());
+
+        result.addAll(FlightDatabase.getTheFlightsList().stream()
+                .filter(f -> f.getDepartureCity().equals(connectingCity) && f.getArrivalCity().equals(arrivalCity))
+                .collect(Collectors.toList()));
+        return result;
+
     }
 }
+
+
 

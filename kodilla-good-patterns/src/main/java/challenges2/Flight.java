@@ -1,28 +1,31 @@
 package challenges2;
 
 
+import java.util.Objects;
+
 public class Flight {
-    private String departureAirport;
-    private String arrivalAirport;
+    public String departureCity;
+    public String arrivalCity;
 
-    public Flight(String departureAirport, String arrivalAirport) {
-        this.departureAirport = departureAirport;
-        this.arrivalAirport = arrivalAirport;
+    public Flight(String departureCity, String arrivalCity) {
+        this.departureCity = departureCity;
+        this.arrivalCity = arrivalCity;
     }
 
-    public String getDepartureAirport() {
-        return departureAirport;
+    public String getDepartureCity() {
+        return departureCity;
     }
 
-    public String getArrivalAirport() {
-        return arrivalAirport;
+    public String getArrivalCity() {
+        return arrivalCity;
+
     }
 
     @Override
     public String toString() {
         return "Flight{" +
-                "departureAirport='" + departureAirport + '\'' +
-                ", arrivalAirport='" + arrivalAirport + '\'' +
+                "departureCity='" + departureCity + '\'' +
+                ", arrivalCity='" + arrivalCity + '\'' +
                 '}';
     }
 
@@ -30,19 +33,14 @@ public class Flight {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Flight flight = (Flight) o;
-
-        if (departureAirport != null ? !departureAirport.equals(flight.departureAirport) : flight.departureAirport != null)
-            return false;
-        return arrivalAirport != null ? arrivalAirport.equals(flight.arrivalAirport) : flight.arrivalAirport == null;
-
+        return Objects.equals(departureCity, flight.departureCity) &&
+                Objects.equals(arrivalCity, flight.arrivalCity);
     }
 
     @Override
     public int hashCode() {
-        int result = departureAirport != null ? departureAirport.hashCode() : 0;
-        result = 31 * result + (arrivalAirport != null ? arrivalAirport.hashCode() : 0);
-        return result;
+
+        return Objects.hash(departureCity, arrivalCity);
     }
 }

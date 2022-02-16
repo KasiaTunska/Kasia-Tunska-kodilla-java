@@ -1,23 +1,22 @@
 package challenges2;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
-public class FlightDatabase {
-    private Set<Flight> flightSet = new HashSet<>();
 
-    public Set<Flight> getFlightSet() {
-        flightSet.add(new Flight("WAW", "WRO"));
-        flightSet.add(new Flight("WRO", "POZ"));
-        flightSet.add(new Flight("SZZ", "WRO"));
-        flightSet.add(new Flight("WMI", "SZZ"));
-        flightSet.add(new Flight("KRK", "WAW"));
-        flightSet.add(new Flight("WRO", "RZE"));
-        flightSet.add(new Flight("RZE", "SZZ"));
-        flightSet.add(new Flight("WMI", "KRK"));
-        flightSet.add(new Flight("KRK", "LCJ"));
-        flightSet.add(new Flight("GDN", "WMI"));
-        return flightSet;
+public final class FlightDatabase {
+
+    public static List<Flight> getTheFlightsList() {
+        List<Flight> theFlightsList = new ArrayList<>();
+        theFlightsList.add(new Flight("Warsaw", "London"));
+        theFlightsList.add(new Flight("London", "New York"));
+        theFlightsList.add(new Flight("Monaco", "Moscow"));
+        theFlightsList.add(new Flight("Bergamo", "Monaco"));
+        theFlightsList.add(new Flight("London", "Monaco"));
+        theFlightsList.add(new Flight("Mumbai", "Rabat"));
+        return new ArrayList<>(theFlightsList);
     }
 }

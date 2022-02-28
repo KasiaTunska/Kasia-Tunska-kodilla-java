@@ -24,6 +24,7 @@ class DbManagerTestSuite {
         assertNotNull(dbManager.getConnection());
     }
     @Test
+
     void testSelectUsers() throws SQLException {
         //Given
         DbManager dbManager = DbManager.getInstance();

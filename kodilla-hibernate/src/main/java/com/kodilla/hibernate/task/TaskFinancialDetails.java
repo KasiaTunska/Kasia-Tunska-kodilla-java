@@ -1,10 +1,11 @@
-package com.kodilla.hibernate.task;
+package com.kodilla.hibernate.task;   //ok
 
-        import com.sun.istack.NotNull;
 
-        import javax.persistence.*;
-        import javax.validation.constraints.NotNull;
-        import java.math.BigDecimal;
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
+
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "TASKS_FINANCIALS")
